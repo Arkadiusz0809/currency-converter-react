@@ -1,0 +1,72 @@
+.form{
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 650px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 0 auto;
+    background-color: beige;
+}
+
+.form__legend{
+    color: white;
+    background-color: hsl(39, 86%, 58%);
+    padding: 7px;
+    border-radius: 3px;
+    text-align: left;
+    margin: 5px;
+}
+
+.form__labelText{
+    width: 250px;
+    max-width: 100%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.form__instruction{
+  text-align: center;
+  border-bottom:1px solid red ;
+  max-width: 470px;
+  margin: auto;
+}
+
+
+.form__select{
+    border: 1px solid #ccc;
+    padding: 5px;
+    max-width: 100px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: hsl(39, 100%, 45%);
+    color: white;
+
+}
+
+.form__select:hover{
+    background-color: hsl(39, 100%, 50%);
+    color: white;
+}
+
+.form__button{
+    color: white;
+    background-color: hsl(180, 100%, 25%);
+    border-style: none;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.form__button:hover{
+    background-color:  hsl(180, 100%, 30%);
+}
+
+.result{
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    max-width: 300px;
+    margin: 5px auto;
+    border-radius: 5px;
+}
