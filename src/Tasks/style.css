@@ -1,0 +1,9 @@
+.result__Table{
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    
+    max-width: 300px;
+    margin: 5px auto;
+    border-radius: 5px;
+}
