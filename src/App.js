@@ -7,20 +7,14 @@ import Tasks from "./Tasks";
 
 
 function App() {
-  const [hideDone, setHideDone] = useState(false);
+  const [result, setResult] = useState(0);
   const [selectedCurrencies, setSelectedCurrencies] = useState([
-    { value: 4.86, label: 'EUR' },
-    { value: 5.52, label: 'GBP' },
-    { value: 4.95, label: 'USD' },
-    { value: 1, label: 'PLN' }
+    { value: 4.86, label: "EUR" },
+    { value: 5.52, label: "GBP" },
+    { value: 4.95, label: "USD" },
+    { value: 1, label: "PLN" }
   ]
   );
-
-  const setSelect = () => {
-
-
-
-  }
 
 
   return (
@@ -32,7 +26,7 @@ function App() {
       <Section
         body={
           <Tasks
-            setSelect={setSelect}
+            
           />
         }
       />

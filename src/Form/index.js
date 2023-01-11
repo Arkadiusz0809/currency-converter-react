@@ -1,7 +1,10 @@
 import "./style.css";
+import React, { useState } from 'react';
 
 
-const Form = () => {
+
+const Form = (showResult) => {
+    const [newAmount, setNewAmount] = useState("");
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -20,6 +23,8 @@ const Form = () => {
                     <label>
                         <span className="form__labelText ">How much ?</span>
                         <input 
+                        value={newAmount}
+                        onChange={({ target }) => setNewAmount(target.value)}
                         className=" form__input" 
                         placeholder="How much?"
                         type="number" 
@@ -51,10 +56,8 @@ const Form = () => {
                         </select>
                     </label>
                 </p>
-                <button 
-                className="form__button"
-                onClick={() => showResult()}
-                >Calculate</button>
+                <button className="form__button">Calculate
+                </button>
             </fieldset>
         </form>
     )
