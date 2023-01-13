@@ -3,8 +3,8 @@ import "./style.css";
 
 
 const Section = ({ body }) => (
-    <section className="section">
-        <div className="section__body">
+    <section>
+        <div>
             {body}
         </div>
     </section>

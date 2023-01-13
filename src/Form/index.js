@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 
 
 
-const Form = (showResult) => {
-    const [newAmount, setNewAmount] = useState("");
+const Form = (newAmount) => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -24,7 +23,6 @@ const Form = (showResult) => {
                         <span className="form__labelText ">How much ?</span>
                         <input 
                         value={newAmount}
-                        onChange={({ target }) => setNewAmount(target.value)}
                         className=" form__input" 
                         placeholder="How much?"
                         type="number" 
@@ -34,30 +32,6 @@ const Form = (showResult) => {
                         required />
                     </label>
                 </p>
-                <p>
-                    <label>
-                        <span className="form__labelText">Your currency: </span>
-                        <select className="form__select ">
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="USD">USD</option>
-                            <option value="PLN">PLN</option>
-                        </select>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <span className="form__labelText">Target currency: </span>
-                        <select className="form__select">
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="USD">USD</option>
-                            <option value="PLN" selected>PLN</option>
-                        </select>
-                    </label>
-                </p>
-                <button className="form__button">Calculate
-                </button>
             </fieldset>
         </form>
     )

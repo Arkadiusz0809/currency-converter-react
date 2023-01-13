@@ -8,7 +8,7 @@ const Tasks = () => {
 
         <div>
             <p className="result__Table">
-                <strong>{result}</strong>
+                <strong></strong>
             </p>
         </div>
 
