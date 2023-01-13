@@ -19,7 +19,7 @@ function App() {
 
   const convertAmountInputCurrency = (currencies) => {
 
-    
+}
 
 
   return (
@@ -38,7 +38,7 @@ function App() {
       />
     </Container>
   );
-}
+
 }
 
 export default App;
