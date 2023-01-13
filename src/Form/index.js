@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 
 
 
-const Form = (newAmount) => {
+const Form = (addNewAmount) => {
+    const [newAmountContent, setNewAmountContent] = useState("");
+
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-
+        addNewAmount(newAmountContent.trim());
+        setNewAmountContent("");
     };
 
 
@@ -22,9 +25,9 @@ const Form = (newAmount) => {
                     <label>
                         <span className="form__labelText ">How much ?</span>
                         <input 
-                        value={newAmount}
                         className=" form__input" 
                         placeholder="How much?"
+                        onChange={({ target }) => setNewAmountContent(target.value)}
                         type="number" 
                         name="amount" 
                         step="0.01" 
