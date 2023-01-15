@@ -3,7 +3,9 @@
     background-color: teal;
     padding: 10px;
     max-width: 400px;
-    margin: 5px auto;
+    margin:0 auto;
     border-radius: 5px;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }

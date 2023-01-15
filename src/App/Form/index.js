@@ -4,13 +4,25 @@ import "./style.css";
 import { useState } from "react";
 
 
-export const Form = ({ calculateResult, result }) => {
-    const [currency, setCurrency] = useState(currencies[0].short);
+const Form = () => {
     const [amount, setAmount] = useState("");
+    const [currencyFrom, setCurrencyFrom] = useState(currencies[0].short);
+    const [currencyTo, setCurrencyTo] = useState(currencies[1].short);
+    const [result, setResult] = useState("");
+
+    const findCurrency = (currencyName) => currencies.find(({ short }) => short === currencyName);
+    const calculateResult = () => {
+        setResult({
+            currencyFrom,
+            currencyTo,
+            targetAmount: (findCurrency(currencyFrom).rate * amount) / findCurrency(currencyTo).rate,
+            sourceAmount: +amount,
+        });
+    };
 
     const onSubmit = (event) => {
         event.preventDefault();
-        calculateResult(currency, amount);
+        calculateResult();
     }
 
     return (
@@ -29,29 +41,44 @@ export const Form = ({ calculateResult, result }) => {
                             className="form__input"
                             type="number"
                             step="0.01"
-                            required />
+                            required
+                            autoFocus />
                     </label>
                 </p>
                 <p>
                     <label>
                         <span className="form__labelText">Your currency: </span>
-                        <select 
-                        className="form__select"
-                        value={currency}
-                        onChange={({ target }) => setCurrency(target.value)}
+                        <select
+                            className="form__select"
+                            value={currencyFrom}
+                            name="currencyFrom"
+                            onChange={({ target }) => setCurrencyFrom(target.value)}
                         >
-                           {currencies.map((currency => (
-                            <option
-                            key={currency.short}
-                            value={currency.short}
-                            >
-                                {currency.name}
-                            </option>
-                           )))}
+                            {currencies.map((currencyFrom => (
+                                <option key={currencyFrom.short} value={currencyFrom.short}>
+                                    {currencyFrom.short}
+                                </option>
+                            )))}
                         </select>
                     </label>
                 </p>
-        
+                <p>
+                    <label>
+                        <span className="form__labelText">Output currency:</span>
+                        <select
+                            className="form__select"
+                            name="currencyTo"
+                            value={currencyTo}
+                            onChange={({ target }) => setCurrencyTo(target.value)}>
+                            {currencies.map(currencyTo => (
+                                <option key={currencyTo.short} value={currencyTo.short}>
+                                    {currencyTo.short}
+                                </option>
+                            ))};
+                        </select>
+                    </label>
+                </p>
+
                 <button className="form__button">Calculate</button>
             </fieldset>
 
@@ -61,4 +88,4 @@ export const Form = ({ calculateResult, result }) => {
 };
 
 
-
+export  { Form };
