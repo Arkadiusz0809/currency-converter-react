@@ -23,9 +23,6 @@
     display: inline-block;
     margin-right: 5px;
 }
-.form__input{
-    max-width: 100px;
-}
 
 .form__instruction{
   text-align: center;
@@ -38,7 +35,7 @@
 .form__select{
     border: 1px solid #ccc;
     padding: 5px;
-    max-width: 100px;
+    max-width: 200px;
     width: 100%;
     border-radius: 5px;
     background-color: hsl(39, 100%, 45%);
@@ -65,12 +62,3 @@
     background-color:  hsl(180, 100%, 30%);
 }
 
-.result{
-    color: white;
-    background-color: teal;
-    padding: 10px;
-    
-    max-width: 300px;
-    margin: 5px auto;
-    border-radius: 5px;
-}
