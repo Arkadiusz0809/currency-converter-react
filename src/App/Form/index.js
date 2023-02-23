@@ -1,6 +1,6 @@
 import { currencies } from "../currencies";
 import { Result } from "./Result";
-import "./style.css";
+import { FormStyled, Legend, LabelText, PrimeText, SelectStyled, Button } from "./styled";
 import { useState } from "react";
 
 
@@ -26,19 +26,18 @@ const Form = () => {
     }
 
     return (
-        <form className="form" onSubmit={onSubmit}>
+        <FormStyled onSubmit={onSubmit}>
             <fieldset>
-                <legend className="form__legend">Currency converter</legend>
-                <p className="form__instruction">
+                <Legend>Currency converter</Legend>
+                <PrimeText>
                     Please enter the <strong>correct data</strong>. Start by select a currency and enter data.
-                </p>
+                </PrimeText>
                 <p>
                     <label>
-                        <span className="form__labelText ">How much ?</span>
+                        <LabelText>How much ?</LabelText>
                         <input
                             value={amount}
                             onChange={({ target }) => setAmount(target.value)}
-                            className="form__input"
                             type="number"
                             step="0.01"
                             required
@@ -47,9 +46,8 @@ const Form = () => {
                 </p>
                 <p>
                     <label>
-                        <span className="form__labelText">Your currency: </span>
-                        <select
-                            className="form__select"
+                        <LabelText>Your currency: </LabelText>
+                        <SelectStyled
                             value={currencyFrom}
                             name="currencyFrom"
                             onChange={({ target }) => setCurrencyFrom(target.value)}
@@ -59,14 +57,13 @@ const Form = () => {
                                     {currencyFrom.short}
                                 </option>
                             )))}
-                        </select>
+                        </SelectStyled>
                     </label>
                 </p>
                 <p>
                     <label>
-                        <span className="form__labelText">Output currency:</span>
-                        <select
-                            className="form__select"
+                        <LabelText>Output currency:</LabelText>
+                        <SelectStyled
                             name="currencyTo"
                             value={currencyTo}
                             onChange={({ target }) => setCurrencyTo(target.value)}>
@@ -75,15 +72,15 @@ const Form = () => {
                                     {currencyTo.short}
                                 </option>
                             ))};
-                        </select>
+                        </SelectStyled>
                     </label>
                 </p>
 
-                <button className="form__button">Calculate</button>
+                <Button>Calculate</Button>
             </fieldset>
 
             <Result result={result} />
-        </form>
+        </FormStyled>
     );
 };
 
