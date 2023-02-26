@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const ClockStyled = styled.div`
+export const Wrapper = styled.div`
     text-align: right;
     font-family: monospace;
-    color: #777;
+    color: ${({ theme }) => theme.color.boulder};
 `;
 

@@ -1,6 +1,6 @@
 import { currencies } from "../currencies";
 import { Result } from "./Result";
-import { FormStyled, Legend, LabelText, PrimeText, SelectStyled, Button } from "./styled";
+import { Field, FormStyled, Legend, LabelText, PrimeText, SelectStyled, Button } from "./styled";
 import { useState } from "react";
 
 
@@ -35,7 +35,7 @@ const Form = () => {
                 <p>
                     <label>
                         <LabelText>How much ?</LabelText>
-                        <input
+                        <Field
                             value={amount}
                             onChange={({ target }) => setAmount(target.value)}
                             type="number"
