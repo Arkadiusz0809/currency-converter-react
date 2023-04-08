@@ -1,12 +1,16 @@
 import { ResultStyled } from "./styled";
 
-export const Result = ({ result }) => {
-    if (result !== "")
-    return (
-        <p>
-            <ResultStyled className="result">
-                {result.sourceAmount} {result.currencyFrom} = {(result.targetAmount).toFixed(2)} {result.currencyTo}
-            </ResultStyled>
-        </p>
-    )
-};
+export const Result = ({ result }) => (
+    <ResultStyled>
+        {result !== undefined && (
+            <>
+                {result.sourceAmount.toFixed(2)}&nbsp; {result.currencyFrom} =
+                {" "}
+                <strong>
+                    {(result.targetAmount).toFixed(2)}&nbsp; {result.currencyTo}
+                </strong>
+            </>
+        )}
+    </ResultStyled>
+);
+

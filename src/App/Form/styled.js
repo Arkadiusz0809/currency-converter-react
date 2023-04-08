@@ -43,6 +43,13 @@ export const PrimeText = styled.p`
     margin: auto;
 `;
 
+export const Info = styled.p`
+   font-size: small;
+    text-align: center;
+    margin: auto;
+    color: ${({ theme }) => theme.color.emperor};
+`;
+
 export const SelectStyled = styled.select`
     border: 1px solid ${({ theme }) => theme.color.silver};
     padding: 5px;
@@ -72,3 +79,11 @@ export const Button = styled.button`
         filter: brightness(110%);
     }
 `; 
+
+export const Loading = styled.p`
+    color: ${({theme}) => theme.color.teal};
+`;
+
+export const Failure = styled.p`
+    color: ${({theme}) => theme.color.crimson};
+`;
