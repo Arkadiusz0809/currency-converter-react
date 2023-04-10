@@ -13,22 +13,22 @@ import {
     Info,
 } from "./styled";
 
-import { useRatesData } from ".useRatesDate";
+import { useRatesData } from "./useRatesData";
 
 
 export const Form = () => {
     const [amount, setAmount] = useState("");
-    const [currency, setCurrency] = useState("");
+    const [currencyFrom, setCurrencyFrom] = useState("");
+    const [currencyTo, setCurrencyTo] = useState("");
     const [result, setResult] = useState();
     const ratesData = useRatesData();
 
-    
-
-    const calculateResult = (currency, amount) => {
-        const rate = ratesData.rates[currency];
+    const calculateResult = (currencyFrom,currencyTo, amount) => {
+        const rate = ratesData.rates[currencyFrom, currencyTo];
 
         setResult({
-            currency,
+            currencyFrom,
+            currencyTo,
             targetAmount: rate * amount / rate,
             sourceAmount: +amount,
         });
@@ -36,7 +36,7 @@ export const Form = () => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult(currency, amount);
+        calculateResult(currencyTo,currencyFrom, amount);
     }
 
     return (
@@ -77,8 +77,8 @@ export const Form = () => {
                                         <LabelText>Your currency: </LabelText>
                                         <SelectStyled
                                         as="select"
-                                        value={currency}
-                                        onChange={({ target }) => setCurrency(target.value)}
+                                        value={currencyFrom.rate}
+                                        onChange={({ target }) => setCurrencyFrom(target.value)}
                                     >
                                         {Object.keys(ratesData.rates).map(((currency) => (
                                             <option
@@ -96,8 +96,8 @@ export const Form = () => {
                                         <LabelText>Output currency:</LabelText>
                                         <SelectStyled
                                         as="select"
-                                        value={currency}
-                                        onChange={({ target }) => setCurrency(target.value)}
+                                        value={currencyTo.rate}
+                                        onChange={({ target }) => setCurrencyTo(target.value)}
                                     >
                                         {Object.keys(ratesData.rates).map(((currency) => (
                                             <option
