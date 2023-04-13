@@ -18,8 +18,8 @@ import { useRatesData } from "./useRatesData";
 
 export const Form = () => {
     const [amount, setAmount] = useState("");
-    const [currencyFrom, setCurrencyFrom] = useState("");
-    const [currencyTo, setCurrencyTo] = useState("");
+    const [currencyFrom, setCurrencyFrom] = useState("EUR");
+    const [currencyTo, setCurrencyTo] = useState("PLN");
     const [result, setResult] = useState();
     const ratesData = useRatesData();
 
@@ -38,7 +38,7 @@ export const Form = () => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult(currencyTo, currencyFrom, amount);
+        calculateResult(currencyFrom, currencyTo, amount);
     }
 
     return (
