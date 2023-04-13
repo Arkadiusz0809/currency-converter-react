@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ResultStyled = styled.strong`
+export const ResultStyled = styled.div`
     color: ${({ theme }) => theme.color.white};
     background-color: ${({ theme }) => theme.color.teal};
     padding: 10px;
@@ -10,5 +10,6 @@ export const ResultStyled = styled.strong`
     text-align: center;
     display: flex;
     justify-content: center;
+    font-weight: 700px;
 `;
 

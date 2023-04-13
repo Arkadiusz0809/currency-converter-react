@@ -18,8 +18,8 @@ import { useRatesData } from "./useRatesData";
 
 export const Form = () => {
     const [amount, setAmount] = useState("");
-    const [currencyFrom, setCurrencyFrom] = useState("EUR");
-    const [currencyTo, setCurrencyTo] = useState("USD");
+    const [currencyFrom, setCurrencyFrom] = useState("");
+    const [currencyTo, setCurrencyTo] = useState("");
     const [result, setResult] = useState();
     const ratesData = useRatesData();
 
@@ -31,7 +31,7 @@ export const Form = () => {
         setResult({
             currencyFrom,
             currencyTo,
-            targetAmount: inputRate * amount / outputRate,
+            targetAmount: (inputRate * amount) / outputRate,
             sourceAmount: +amount,
         });
     };
@@ -97,7 +97,7 @@ export const Form = () => {
                                     <LabelText>Output currency:</LabelText>
                                     <SelectStyled
                                         as="select"
-                                        value={currencyTo.rate}
+                                        value={currencyTo}
                                         onChange={({ target }) => setCurrencyTo(target.value)}
                                     >
                                         {Object.keys(ratesData.rates).map(((currencyTo) => (
