@@ -3,12 +3,14 @@ Description:
 I used the necessary possibility to moved from clean JS on React.js
 Enjoy!
 
+![](https://github.com/Arkadiusz0809/currency-converter-react/blob/main/2-selects.gif?raw=true)
+
 [App](https://arkadiusz0809.github.io/currency-converter-react/)
 
 ## `technologies used in the project`
 
 `HTML`
-`CSS`
+`Styled Components`
 `javaScript ES6+`
 `BEM Convention`
 `Open Graph`
@@ -20,6 +22,7 @@ Enjoy!
 `webpack`
 `babel`
 `styled-components`
+`Redux`
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
