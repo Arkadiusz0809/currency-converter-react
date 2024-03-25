@@ -29,9 +29,23 @@ export const Field = styled.input`
 
 `;
 
+export const Label = styled.div`
+    display: flex;
+
+    @media(max-width: 460px) 
+    {
+        display: grid;
+        justify-content: center;
+        grid-gap: 10px;
+        margin: 0;
+        text-align: center;
+
+    }
+`;
+
 export const LabelText = styled.span`
     width: 100%;
-    max-width: 250px;
+    max-width: 200px;
     display: inline-block;
     margin-right: 5px;
 `;
@@ -53,8 +67,6 @@ export const Info = styled.p`
 export const SelectStyled = styled.select`
     border: 1px solid ${({ theme }) => theme.color.silver};
     padding: 5px;
-    max-width: 200px;
-    width: 100%;
     border-radius: 5px;
     background-color: ${({ theme }) => theme.color.orange};
     color: white;

@@ -11,40 +11,43 @@ import {
     Loading,
     Failure,
     Info,
+    Label,
 } from "./styled";
 
-import { useRatesData } from "./useRatesData";
+import { useCurrencies } from "./useRatesData";
 
 
 export const Form = () => {
-    const [amount, setAmount] = useState("");
+    const [newAmount, setNewAmount] = useState("");
     const [currencyFrom, setCurrencyFrom] = useState("EUR");
     const [currencyTo, setCurrencyTo] = useState("PLN");
     const [result, setResult] = useState();
-    const ratesData = useRatesData();
 
-    const calculateResult = (currencyFrom, currencyTo, amount) => {
-        const inputRate = ratesData.rates[currencyFrom];
-        const outputRate = ratesData.rates[currencyTo];
+    const { rates, state, date } = useCurrencies();
+
+    const calculateResult = (currencyFrom, currencyTo, newAmount) => {
+        const inputRate = rates[currencyFrom].value;
+        const outputRate = rates[currencyTo].value;
 
 
         setResult({
             currencyFrom,
             currencyTo,
-            targetAmount: (inputRate * amount) / outputRate,
-            sourceAmount: +amount,
+            targetAmount: (inputRate * newAmount) / outputRate,
+            sourceAmount: +newAmount,
+            date: new Date(date).toLocaleDateString("pl-PL"),
         });
     };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult(currencyFrom, currencyTo, amount);
+        calculateResult(currencyFrom, currencyTo, newAmount);
     }
 
     return (
         <FormStyled onSubmit={onFormSubmit}>
             <Legend>Currency converter</Legend>
-            {ratesData.state === "loading"
+            {state === "loading"
                 ? (
                     <Loading>
                         Second... <br />Creating connection with European Central Bank
@@ -52,7 +55,7 @@ export const Form = () => {
                 )
 
                 : (
-                    ratesData.state === "error" ? (
+                    state === "error" ? (
                         <Failure>
                             Ooops... Something's gone wrong 🤔 You check, your intenet connecting
                         </Failure>
@@ -62,26 +65,26 @@ export const Form = () => {
                                 Please enter the <strong>correct data</strong>. Start by select a currency and enter data.
                             </PrimeText>
                             <p>
-                                <label>
+                                <Label>
                                     <LabelText>How much ?</LabelText>
                                     <Field
-                                        value={amount}
-                                        onChange={({ target }) => setAmount(target.value)}
+                                        value={newAmount}
+                                        onChange={({ target }) => setNewAmount(target.value)}
                                         type="number"
                                         step="0.01"
                                         required
                                         autoFocus />
-                                </label>
+                                </Label>
                             </p>
                             <p>
-                                <label>
+                                <Label>
                                     <LabelText>Your currency: </LabelText>
                                     <SelectStyled
                                         as="select"
                                         value={currencyFrom}
                                         onChange={({ target }) => setCurrencyFrom(target.value)}
                                     >
-                                        {Object.keys(ratesData.rates).map(((currencyFrom) => (
+                                        {Object.keys(rates).map(((currencyFrom) => (
                                             <option
                                                 key={currencyFrom}
                                                 value={currencyFrom}
@@ -90,17 +93,17 @@ export const Form = () => {
                                             </option>
                                         )))}
                                     </SelectStyled>
-                                </label>
+                                </Label>
                             </p>
                             <p>
-                                <label>
+                                <Label>
                                     <LabelText>Output currency:</LabelText>
                                     <SelectStyled
                                         as="select"
                                         value={currencyTo}
                                         onChange={({ target }) => setCurrencyTo(target.value)}
                                     >
-                                        {Object.keys(ratesData.rates).map(((currencyTo) => (
+                                        {Object.keys(rates).map(((currencyTo) => (
                                             <option
                                                 key={currencyTo}
                                                 value={currencyTo}
@@ -109,13 +112,13 @@ export const Form = () => {
                                             </option>
                                         )))}
                                     </SelectStyled>
-                                </label>
+                                </Label>
                             </p>
                             <p>
                                 <Button>Calculate</Button>
                             </p>
                             <Info>
-                                Rates has been downloaded from website nbp.pl
+                            Exchange rates are charged from the European Central Bank<br /> Current as of the date <strong> 25.03.2024 </strong>
                             </Info>
                             <Result result={result} />
 

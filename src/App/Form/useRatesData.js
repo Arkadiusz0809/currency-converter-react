@@ -1,35 +1,36 @@
 import { useState, useEffect } from "react";
+import { getCurrenciesFetch } from "./useGetCurrenciesFetch";
 
-export const useRatesData = () => {
-    const [ratesData, setRatesData] = useState({
+export const useCurrencies = () => {
+    const [currencyApi, setCurrencyApi] = useState({
         state: "loading",
+        rates: null,
+        date: null,
     });
 
     useEffect(() => {
         const fetchRates = async () => {
             try {
-                const response = await fetch("https://api.exchangerate.host/latest");
+                const response = await getCurrenciesFetch();
 
-                if (!response.ok) {
+                if (!response?.data) {
                     throw new Error(response.statusText);
                 }
 
-                const { rates, date } = await response.json();
-
-                setRatesData({
+                setCurrencyApi({
                     state: "success",
-                    rates,
-                    date,
-                });
-            } catch {
-                setRatesData({
+                    rates: response.data,
+                    date: response.meta.last_updated_at,
+                  });
+                } catch {
+                  setCurrencyApi({
                     state: "error",
-                });
+                  });
             }
         };
 
         setTimeout(fetchRates, 1000);
     }, []);
 
-    return ratesData;
+    return currencyApi;
 };
