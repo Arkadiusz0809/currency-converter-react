@@ -1,5 +1,6 @@
 ## Currency Converter
 Description:
+You have capability to choose one of more than 160 currencies.
 I used the necessary possibility to moved from clean JS on React.js
 Enjoy!
 
